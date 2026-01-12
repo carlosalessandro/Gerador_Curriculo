@@ -105,8 +105,18 @@ public class DetalheCurriculoActivity extends AppCompatActivity {
         textObjetivo.setText(curriculo.getObjetivo() != null ? curriculo.getObjetivo() : "Não informado");
         textResumo.setText(curriculo.getResumoProfissional() != null ? curriculo.getResumoProfissional() : "Não informado");
         
-        textDataCriacao.setText("Criado: " + dateFormat.format(curriculo.getDataCriacao()));
-        textDataAtualizacao.setText("Atualizado: " + dateFormat.format(curriculo.getDataAtualizacao()));
+        // Proteção contra datas null
+        if (curriculo.getDataCriacao() != null) {
+            textDataCriacao.setText("Criado: " + dateFormat.format(curriculo.getDataCriacao()));
+        } else {
+            textDataCriacao.setText("Criado: --/--/---- --:--");
+        }
+        
+        if (curriculo.getDataAtualizacao() != null) {
+            textDataAtualizacao.setText("Atualizado: " + dateFormat.format(curriculo.getDataAtualizacao()));
+        } else {
+            textDataAtualizacao.setText("Atualizado: --/--/---- --:--");
+        }
         
         if (curriculo.getAtsScore() > 0) {
             textAtsScore.setText("Pontuação ATS: " + curriculo.getAtsScore() + "/100");
@@ -115,7 +125,7 @@ public class DetalheCurriculoActivity extends AppCompatActivity {
             textAtsScore.setVisibility(android.view.View.GONE);
         }
         
-        if (getSupportActionBar() != null) {
+        if (getSupportActionBar() != null && curriculo.getNomeCompleto() != null) {
             getSupportActionBar().setTitle(curriculo.getNomeCompleto());
         }
     }

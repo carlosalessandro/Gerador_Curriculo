@@ -101,41 +101,49 @@ public class EditarCurriculoActivity extends AppCompatActivity {
     }
 
     private void preencherCampos() {
-        if (curriculo.getNomeCompleto() != null) editNomeCompleto.setText(curriculo.getNomeCompleto());
-        if (curriculo.getEmail() != null) editEmail.setText(curriculo.getEmail());
-        if (curriculo.getTelefone() != null) editTelefone.setText(curriculo.getTelefone());
-        if (curriculo.getEndereco() != null) editEndereco.setText(curriculo.getEndereco());
-        if (curriculo.getLinkedin() != null) editLinkedin.setText(curriculo.getLinkedin());
-        if (curriculo.getGithub() != null) editGithub.setText(curriculo.getGithub());
-        if (curriculo.getObjetivo() != null) editObjetivo.setText(curriculo.getObjetivo());
-        if (curriculo.getResumoProfissional() != null) editResumoProfissional.setText(curriculo.getResumoProfissional());
+        if (editNomeCompleto != null && curriculo.getNomeCompleto() != null) 
+            editNomeCompleto.setText(curriculo.getNomeCompleto());
+        if (editEmail != null && curriculo.getEmail() != null) 
+            editEmail.setText(curriculo.getEmail());
+        if (editTelefone != null && curriculo.getTelefone() != null) 
+            editTelefone.setText(curriculo.getTelefone());
+        if (editEndereco != null && curriculo.getEndereco() != null) 
+            editEndereco.setText(curriculo.getEndereco());
+        if (editLinkedin != null && curriculo.getLinkedin() != null) 
+            editLinkedin.setText(curriculo.getLinkedin());
+        if (editGithub != null && curriculo.getGithub() != null) 
+            editGithub.setText(curriculo.getGithub());
+        if (editObjetivo != null && curriculo.getObjetivo() != null) 
+            editObjetivo.setText(curriculo.getObjetivo());
+        if (editResumoProfissional != null && curriculo.getResumoProfissional() != null) 
+            editResumoProfissional.setText(curriculo.getResumoProfissional());
     }
 
     private boolean validarCampos() {
         boolean valido = true;
         
-        if (editNomeCompleto.getText().toString().trim().isEmpty()) {
-            inputNomeCompleto.setError("Nome completo é obrigatório");
+        if (editNomeCompleto == null || editNomeCompleto.getText().toString().trim().isEmpty()) {
+            if (inputNomeCompleto != null) inputNomeCompleto.setError("Nome completo é obrigatório");
             valido = false;
         } else {
-            inputNomeCompleto.setError(null);
+            if (inputNomeCompleto != null) inputNomeCompleto.setError(null);
         }
         
-        if (editEmail.getText().toString().trim().isEmpty()) {
-            inputEmail.setError("E-mail é obrigatório");
+        if (editEmail == null || editEmail.getText().toString().trim().isEmpty()) {
+            if (inputEmail != null) inputEmail.setError("E-mail é obrigatório");
             valido = false;
         } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(editEmail.getText().toString()).matches()) {
-            inputEmail.setError("E-mail inválido");
+            if (inputEmail != null) inputEmail.setError("E-mail inválido");
             valido = false;
         } else {
-            inputEmail.setError(null);
+            if (inputEmail != null) inputEmail.setError(null);
         }
         
-        if (editTelefone.getText().toString().trim().isEmpty()) {
-            inputTelefone.setError("Telefone é obrigatório");
+        if (editTelefone == null || editTelefone.getText().toString().trim().isEmpty()) {
+            if (inputTelefone != null) inputTelefone.setError("Telefone é obrigatório");
             valido = false;
         } else {
-            inputTelefone.setError(null);
+            if (inputTelefone != null) inputTelefone.setError(null);
         }
         
         return valido;
@@ -146,14 +154,14 @@ public class EditarCurriculoActivity extends AppCompatActivity {
             return;
         }
         
-        curriculo.setNomeCompleto(editNomeCompleto.getText().toString().trim());
-        curriculo.setEmail(editEmail.getText().toString().trim());
-        curriculo.setTelefone(editTelefone.getText().toString().trim());
-        curriculo.setEndereco(editEndereco.getText().toString().trim());
-        curriculo.setLinkedin(editLinkedin.getText().toString().trim());
-        curriculo.setGithub(editGithub.getText().toString().trim());
-        curriculo.setObjetivo(editObjetivo.getText().toString().trim());
-        curriculo.setResumoProfissional(editResumoProfissional.getText().toString().trim());
+        if (editNomeCompleto != null) curriculo.setNomeCompleto(editNomeCompleto.getText().toString().trim());
+        if (editEmail != null) curriculo.setEmail(editEmail.getText().toString().trim());
+        if (editTelefone != null) curriculo.setTelefone(editTelefone.getText().toString().trim());
+        if (editEndereco != null) curriculo.setEndereco(editEndereco.getText().toString().trim());
+        if (editLinkedin != null) curriculo.setLinkedin(editLinkedin.getText().toString().trim());
+        if (editGithub != null) curriculo.setGithub(editGithub.getText().toString().trim());
+        if (editObjetivo != null) curriculo.setObjetivo(editObjetivo.getText().toString().trim());
+        if (editResumoProfissional != null) curriculo.setResumoProfissional(editResumoProfissional.getText().toString().trim());
         
         new Thread(() -> {
             int resultado = databaseHelper.atualizarCurriculo(curriculo);

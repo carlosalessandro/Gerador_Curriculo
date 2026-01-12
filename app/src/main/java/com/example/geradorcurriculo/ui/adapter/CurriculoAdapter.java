@@ -59,18 +59,25 @@ public class CurriculoAdapter extends BaseAdapter {
         
         holder.textNome.setText(curriculo.getNomeCompleto() != null ? curriculo.getNomeCompleto() : "Sem nome");
         holder.textEmail.setText(curriculo.getEmail() != null ? curriculo.getEmail() : "Sem e-mail");
-        holder.textData.setText("Atualizado: " + dateFormat.format(curriculo.getDataAtualizacao()));
+        
+        // Proteção contra dataAtualizacao null
+        if (curriculo.getDataAtualizacao() != null) {
+            holder.textData.setText("Atualizado: " + dateFormat.format(curriculo.getDataAtualizacao()));
+        } else {
+            holder.textData.setText("Atualizado: --/--/----");
+        }
         
         if (curriculo.getAtsScore() > 0) {
             holder.textAtsScore.setText("ATS: " + curriculo.getAtsScore() + "/100");
             holder.textAtsScore.setVisibility(View.VISIBLE);
             
+            // Usar ContextCompat para compatibilidade
             if (curriculo.getAtsScore() >= 80) {
-                holder.textAtsScore.setBackgroundColor(context.getResources().getColor(android.R.color.holo_green_dark));
+                holder.textAtsScore.setBackgroundColor(androidx.core.content.ContextCompat.getColor(context, android.R.color.holo_green_dark));
             } else if (curriculo.getAtsScore() >= 60) {
-                holder.textAtsScore.setBackgroundColor(context.getResources().getColor(android.R.color.holo_orange_dark));
+                holder.textAtsScore.setBackgroundColor(androidx.core.content.ContextCompat.getColor(context, android.R.color.holo_orange_dark));
             } else {
-                holder.textAtsScore.setBackgroundColor(context.getResources().getColor(android.R.color.holo_red_dark));
+                holder.textAtsScore.setBackgroundColor(androidx.core.content.ContextCompat.getColor(context, android.R.color.holo_red_dark));
             }
         } else {
             holder.textAtsScore.setVisibility(View.GONE);

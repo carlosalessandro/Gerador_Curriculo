@@ -3,7 +3,6 @@ package com.example.geradorcurriculo.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -130,7 +129,8 @@ public class ListaCurriculosActivity extends AppCompatActivity {
     }
 
     private void exportarPDF(Curriculo curriculo) {
-        
+        // TODO: Implementar exportação PDF
+        android.widget.Toast.makeText(this, "Funcionalidade em desenvolvimento", android.widget.Toast.LENGTH_SHORT).show();
     }
 
     private void confirmarExclusao(Curriculo curriculo) {
