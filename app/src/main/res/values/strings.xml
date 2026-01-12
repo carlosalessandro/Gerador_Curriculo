@@ -1,0 +1,109 @@
+<resources>
+    <string name="app_name">CV Pro</string>
+    
+    <!-- Main Activity -->
+    <string name="title_main">Gerador de Currículo</string>
+    <string name="subtitle_main">Crie currículos profissionais com análise ATS</string>
+    <string name="btn_novo_curriculo">Novo Currículo</string>
+    <string name="btn_meus_curriculos">Meus Currículos</string>
+    <string name="btn_importar">Importar Currículo</string>
+    <string name="btn_analise_ats">Análise ATS</string>
+    
+    <!-- Create Curriculum -->
+    <string name="title_criar_curriculo">Novo Currículo</string>
+    <string name="hint_nome_completo">Nome Completo*</string>
+    <string name="hint_email">E-mail*</string>
+    <string name="hint_telefone">Telefone*</string>
+    <string name="hint_endereco">Endereço</string>
+    <string name="hint_linkedin">LinkedIn</string>
+    <string name="hint_github">GitHub</string>
+    <string name="hint_objetivo">Objetivo Profissional</string>
+    <string name="hint_resumo_profissional">Resumo Profissional</string>
+    <string name="btn_adicionar_experiencia">Adicionar Experiência</string>
+    <string name="btn_adicionar_formacao">Adicionar Formação</string>
+    <string name="btn_adicionar_habilidade">Adicionar Habilidade</string>
+    <string name="btn_adicionar_idioma">Adicionar Idioma</string>
+    
+    <!-- Import Curriculum -->
+    <string name="title_importar_curriculo">Importar Currículo</string>
+    <string name="select_file_format">Selecione o formato do arquivo</string>
+    <string name="import_pdf">Importar PDF</string>
+    <string name="import_docx">Importar DOCX</string>
+    <string name="select_pdf_file">Selecione um arquivo PDF para importar</string>
+    <string name="select_docx_file">Selecione um arquivo Word para importar</string>
+    <string name="process_file">Processar Arquivo</string>
+    <string name="file_selected">Arquivo selecionado: %s</string>
+    
+    <!-- ATS Analysis -->
+    <string name="title_analise_ats">Análise ATS</string>
+    <string name="curriculum_label">Currículo: %s</string>
+    <string name="btn_realizar_analise">Realizar Análise ATS</string>
+    <string name="ats_score_label">Pontuação ATS</string>
+    <string name="analyzing">Analisando...</string>
+    <string name="suggestions_title">Sugestões de Melhoria</string>
+    <string name="about_ats_analysis">Sobre a Análise ATS:</string>
+    <string name="ats_description">A análise ATS (Applicant Tracking System) avalia seu currículo com base em critérios usados por sistemas de rastreamento de candidatos. Nossa análise considera:\n\n• Estrutura e formatação\n• Palavras-chave relevantes\n• Verbos de ação\n• Métricas e resultados\n• Clareza e objetividade</string>
+    
+    <!-- Score Interpretation -->
+    <string name="score_interpretation">Interpretação da Pontuação:</string>
+    <string name="score_excellent">• 80-100: Excelente - Seu currículo está muito bem otimizado</string>
+    <string name="score_good">• 60-79: Bom - Seu currículo tem uma boa pontuação</string>
+    <string name="score_regular">• 40-59: Regular - Considere as sugestões para melhorar</string>
+    <string name="score_low">• 0-39: Baixo - Siga as sugestões para melhorar significativamente</string>
+    
+    <!-- Import Tips -->
+    <string name="import_tips_title">Dicas para melhor importação:</string>
+    <string name="import_tips">• Use arquivos bem estruturados\n• Inclua informações de contato claras\n• Separe bem as seções (experiência, formação, etc.)\n• Evite formatação muito complexa</string>
+    
+    <!-- Messages -->
+    <string name="curriculum_saved_success">Currículo salvo com sucesso!</string>
+    <string name="curriculum_saved_error">Erro ao salvar currículo</string>
+    <string name="curriculum_imported_success">Currículo importado com sucesso!</string>
+    <string name="curriculum_imported_error">Erro ao importar currículo</string>
+    <string name="select_file_first">Selecione um arquivo primeiro</string>
+    <string name="error_processing_file">Não foi possível processar o arquivo</string>
+    <string name="error_analysis">Não foi possível realizar a análise</string>
+    <string name="curriculum_not_found">Currículo não encontrado</string>
+    <string name="curriculum_not_loaded">Currículo não carregado</string>
+    <string name="confirm_delete_title">Confirmar Exclusão</string>
+    <string name="confirm_delete_message">Tem certeza que deseja excluir este currículo?</string>
+    <string name="delete">Excluir</string>
+    <string name="cancel">Cancelar</string>
+    <string name="edit">Editar</string>
+    <string name="view">Visualizar</string>
+    <string name="export_pdf">Exportar PDF</string>
+    <string name="analysis_ats">Análise ATS</string>
+    <string name="delete_curriculum">Excluir</string>
+    <string name="options">Opções</string>
+    
+    <!-- Empty State -->
+    <string name="no_curriculum_found">Nenhum currículo encontrado\n\nClique no botão + para criar seu primeiro currículo</string>
+    
+    <!-- Validation -->
+    <string name="error_name_required">Nome completo é obrigatório</string>
+    <string name="error_email_required">E-mail é obrigatório</string>
+    <string name="error_email_invalid">E-mail inválido</string>
+    <string name="error_phone_required">Telefone é obrigatório</string>
+    
+    <!-- Success Messages -->
+    <string name="excellent_score">Excelente! Seu currículo está bem otimizado para ATS.</string>
+    <string name="good_score">Bom! Seu currículo tem uma boa pontuação ATS.</string>
+    <string name="regular_score">Regular. Considere as sugestões para melhorar.</string>
+    <string name="low_score">Baixo. Siga as sugestões para melhorar significativamente.</string>
+    
+    <!-- App Rating -->
+    <string name="rate_title">Avalie o CV Pro</string>
+    <string name="rate_message">Se você está gostando do CV Pro, por favor avalie na Play Store. Isso nos ajuda a melhorar o app!</string>
+    <string name="rate_rate">Avaliar Agora</string>
+    <string name="rate_later">Lembre-me Depois</string>
+    <string name="rate_no">Não, Obrigado</string>
+    
+    <!-- Premium Features -->
+    <string name="premium_title">CV Pro Premium</string>
+    <string name="premium_subtitle">Desbloqueie todos os recursos e potencialize sua carreira!</string>
+    <string name="premium_monthly">R$19,90/mês</string>
+    <string name="premium_lifetime">R$99,90 vitalício</string>
+    <string name="premium_features">• Currículos ilimitados\n• Análise ATS avançada\n• 50+ templates profissionais\n• Exportação em múltiplos formatos\n• Prioridade no suporte</string>
+    <string name="btn_upgrade">Assinar Premium</string>
+    <string name="btn_restore">Restorar Compra</string>
+</resources>
