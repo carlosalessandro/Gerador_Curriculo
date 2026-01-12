@@ -3,8 +3,8 @@ package com.example.geradorcurriculo.services;
 import android.content.Context;
 import android.net.Uri;
 import com.example.geradorcurriculo.model.Curriculo;
-import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
-import org.apache.poi.xwpf.usermodel.XWPFDocument;
+// import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
+// import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.regex.Matcher;
@@ -13,14 +13,19 @@ import java.util.regex.Pattern;
 public class DocxParserService {
 
     public Curriculo parseDOCX(Context context, Uri uri) throws IOException {
+        // TODO: Implementar quando Apache POI estiver disponível
+        throw new UnsupportedOperationException("Importação de DOCX não implementada ainda");
+        /*
         String texto = extrairTextoDOCX(context, uri);
         if (texto == null || texto.trim().isEmpty()) {
             return null;
         }
         
         return extrairInformacoesCurriculo(texto);
+        */
     }
 
+    /*
     private String extrairTextoDOCX(Context context, Uri uri) throws IOException {
         try (InputStream inputStream = context.getContentResolver().openInputStream(uri);
              XWPFDocument document = new XWPFDocument(inputStream);
@@ -137,4 +142,5 @@ public class DocxParserService {
         }
         return "";
     }
+    */
 }

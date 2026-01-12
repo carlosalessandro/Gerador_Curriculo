@@ -1,6 +1,7 @@
 package com.example.geradorcurriculo.services;
 
 import com.example.geradorcurriculo.model.Curriculo;
+import com.example.geradorcurriculo.model.ExperienciaProfissional;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -53,7 +54,7 @@ public class ATSService {
         return new ATSResult(score, suggestions);
     }
 
-    private String montarTextoCompleto(Curriculo curriculo) {
+    protected String montarTextoCompleto(Curriculo curriculo) {
         StringBuilder texto = new StringBuilder();
         
         if (curriculo.getNomeCompleto() != null) texto.append(curriculo.getNomeCompleto()).append(" ");
@@ -62,7 +63,7 @@ public class ATSService {
         
         if (curriculo.getExperiencias() != null) {
             for (int i = 0; i < curriculo.getExperiencias().size(); i++) {
-                var exp = curriculo.getExperiencias().get(i);
+                ExperienciaProfissional exp = curriculo.getExperiencias().get(i);
                 texto.append(exp.getCargo()).append(" ");
                 texto.append(exp.getDescricao()).append(" ");
             }

@@ -2,6 +2,7 @@ package com.example.geradorcurriculo.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import com.example.geradorcurriculo.ui.PremiumActivity;
 import java.util.Date;
 
 public class PremiumManager {

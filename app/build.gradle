@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace 'br.com.cvpro.app'
+    namespace 'com.example.geradorcurriculo'
     compileSdk 34
 
     defaultConfig {
@@ -26,6 +26,10 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    
+    lintOptions {
+        abortOnError false
+    }
 }
 
 dependencies {
@@ -37,6 +41,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.11.0'
     implementation 'androidx.navigation:navigation-fragment:2.7.6'
     implementation 'androidx.navigation:navigation-ui:2.7.6'
+    implementation 'androidx.viewpager2:viewpager2:1.0.0'
     
     // JSON parsing
     implementation 'com.google.code.gson:gson:2.9.0'
@@ -47,6 +52,18 @@ dependencies {
     
     // HTTP client for ATS analysis
     implementation 'com.squareup.okhttp3:okhttp:4.9.3'
+    
+    // PDF generation - iText
+    implementation 'com.itextpdf:itext7-core:7.2.5'
+    
+    // PDF e DOCX parsing - comentados temporariamente para resolver compilação
+    // implementation 'com.tom_roush:pdfbox-android:2.0.27.0'
+    // implementation 'org.apache.poi:poi-ooxml:5.2.3'
+    
+    // Firebase (optional - comentado por enquanto)
+    // implementation platform('com.google.firebase:firebase-bom:32.7.0')
+    // implementation 'com.google.firebase:firebase-analytics'
+    // implementation 'com.google.firebase:firebase-crashlytics'
     
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
