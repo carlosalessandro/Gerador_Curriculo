@@ -279,9 +279,9 @@ Este projeto está licenciado sob a Licença MIT. Veja o arquivo [LICENSE](LICEN
 
 ## 📞 Contato
 
-- **Desenvolvedor**: Carlos Alessandro
-- **Email**: contato@cvpro.app
-- **Website**: [cvpro.app](https://cvpro.app)
+- **Desenvolvedor**: Carlos Alessandro Semiao
+- **Email**: carlosalessandro.bc@gmail.com
+- **Website**: 
 - **LinkedIn**: [linkedin.com/in/carlosalessandro](https://linkedin.com/in/carlosalessandro)
 
 ## 🙏 Agradecimentos
