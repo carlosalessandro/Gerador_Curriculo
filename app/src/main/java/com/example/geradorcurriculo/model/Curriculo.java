@@ -171,4 +171,33 @@ public class Curriculo {
     public void setAtsSuggestions(List<String> atsSuggestions) {
         this.atsSuggestions = atsSuggestions;
     }
+    
+    // Métodos auxiliares para importação de texto
+    private String experienciaProfissionalTexto;
+    private String formacaoAcademicaTexto;
+    private String habilidadesTexto;
+    
+    public String getExperienciaProfissionalTexto() {
+        return experienciaProfissionalTexto;
+    }
+    
+    public void setExperienciaProfissional(String texto) {
+        this.experienciaProfissionalTexto = texto;
+    }
+    
+    public String getFormacaoAcademicaTexto() {
+        return formacaoAcademicaTexto;
+    }
+    
+    public void setFormacaoAcademica(String texto) {
+        this.formacaoAcademicaTexto = texto;
+    }
+    
+    public String getHabilidadesTexto() {
+        return habilidadesTexto;
+    }
+    
+    public void setHabilidades(String texto) {
+        this.habilidadesTexto = texto;
+    }
 }
