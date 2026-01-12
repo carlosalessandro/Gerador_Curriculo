@@ -156,21 +156,21 @@ public class DetalheCurriculoActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_editar:
-                editarCurriculo();
-                return true;
-            case R.id.action_gerar_pdf:
-                gerarPDF();
-                return true;
-            case R.id.action_analise_ats:
-                realizarAnaliseATS();
-                return true;
-            case android.R.id.home:
-                onBackPressed();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        int id = item.getItemId();
+        if (id == R.id.action_editar) {
+            editarCurriculo();
+            return true;
+        } else if (id == R.id.action_gerar_pdf) {
+            gerarPDF();
+            return true;
+        } else if (id == R.id.action_analise_ats) {
+            realizarAnaliseATS();
+            return true;
+        } else if (id == android.R.id.home) {
+            onBackPressed();
+            return true;
+        } else {
+            return super.onOptionsItemSelected(item);
         }
     }
 }

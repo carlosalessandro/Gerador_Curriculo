@@ -13,6 +13,7 @@ import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.canvas.draw.SolidLine;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.List;
@@ -47,31 +48,31 @@ public class PDFGeneratorService {
             PdfFont fontNormal = PdfFontFactory.createFont(StandardFonts.HELVETICA);
 
             adicionarCabecalho(document, curriculo, fontBold, fontNormal);
-            document.add(new LineSeparator());
+            document.add(new LineSeparator(new SolidLine()));
             
             if (curriculo.getResumoProfissional() != null && !curriculo.getResumoProfissional().trim().isEmpty()) {
                 adicionarResumoProfissional(document, curriculo, fontBold, fontNormal);
-                document.add(new LineSeparator());
+                document.add(new LineSeparator(new SolidLine()));
             }
             
             if (curriculo.getExperiencias() != null && !curriculo.getExperiencias().isEmpty()) {
                 adicionarExperiencias(document, curriculo, fontBold, fontNormal);
-                document.add(new LineSeparator());
+                document.add(new LineSeparator(new SolidLine()));
             }
             
             if (curriculo.getFormacoes() != null && !curriculo.getFormacoes().isEmpty()) {
                 adicionarFormacoes(document, curriculo, fontBold, fontNormal);
-                document.add(new LineSeparator());
+                document.add(new LineSeparator(new SolidLine()));
             }
             
             if (curriculo.getHabilidades() != null && !curriculo.getHabilidades().isEmpty()) {
                 adicionarHabilidades(document, curriculo, fontBold, fontNormal);
-                document.add(new LineSeparator());
+                document.add(new LineSeparator(new SolidLine()));
             }
             
             if (curriculo.getIdiomas() != null && !curriculo.getIdiomas().isEmpty()) {
                 adicionarIdiomas(document, curriculo, fontBold, fontNormal);
-                document.add(new LineSeparator());
+                document.add(new LineSeparator(new SolidLine()));
             }
             
             if (curriculo.getCertificacoes() != null && !curriculo.getCertificacoes().isEmpty()) {
@@ -181,7 +182,7 @@ public class PDFGeneratorService {
             Paragraph empresaPeriodo = new Paragraph(periodo.toString())
                     .setFont(fontNormal)
                     .setFontSize(10)
-                    .setFontStyle(com.itextpdf.kernel.pdf.canvas.PdfCanvasConstants.FontStyle.ITALIC);
+                    .setItalic();
             document.add(empresaPeriodo);
 
             if (exp.getDescricao() != null && !exp.getDescricao().trim().isEmpty()) {

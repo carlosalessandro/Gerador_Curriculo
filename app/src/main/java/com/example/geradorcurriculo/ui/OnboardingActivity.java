@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 import com.example.geradorcurriculo.MainActivity;
 import com.example.geradorcurriculo.R;
@@ -147,7 +148,7 @@ public class OnboardingActivity extends AppCompatActivity {
         public String getHighlight() { return highlight; }
     }
 
-    private static class OnboardingAdapter extends androidx.viewpager2.adapter.RecyclerView.Adapter<OnboardingAdapter.OnboardingViewHolder> {
+    private static class OnboardingAdapter extends RecyclerView.Adapter<OnboardingAdapter.OnboardingViewHolder> {
 
         private final List<OnboardingItem> items;
 

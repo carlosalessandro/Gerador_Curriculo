@@ -10,6 +10,7 @@ import com.example.geradorcurriculo.ui.ListaCurriculosActivity;
 import com.example.geradorcurriculo.ui.CriarCurriculoActivity;
 import com.example.geradorcurriculo.ui.ImportarCurriculoActivity;
 import com.example.geradorcurriculo.ui.AnaliseAtsActivity;
+import com.example.geradorcurriculo.ui.OnboardingActivity;
 import com.example.geradorcurriculo.ui.PremiumActivity;
 import com.example.geradorcurriculo.utils.AppRater;
 import com.example.geradorcurriculo.utils.PremiumManager;

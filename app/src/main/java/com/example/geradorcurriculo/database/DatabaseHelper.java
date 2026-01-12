@@ -160,7 +160,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             values.put("ats_suggestions", gson.toJson(curriculo.getAtsSuggestions()));
         }
 
-        long id = db.insert(TABLE_CURRICULOS, null, db);
+        long id = db.insert(TABLE_CURRICULOS, null, values);
         curriculo.setId(id);
 
         if (curriculo.getExperiencias() != null) {
