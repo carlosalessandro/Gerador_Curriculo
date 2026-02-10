@@ -24,9 +24,9 @@
         android:theme="@style/Theme.GeradorCurriculo"
         tools:targetApi="31">
 
-        <!-- Login Activity -->
+        <!-- Splash Activity -->
         <activity
-            android:name=".ui.LoginActivity"
+            android:name=".ui.SplashActivity"
             android:exported="true"
             android:theme="@style/Theme.GeradorCurriculo.NoActionBar"
             android:screenOrientation="portrait">
@@ -34,6 +34,14 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <!-- Login Activity -->
+        <activity
+            android:name=".ui.LoginActivity"
+            android:exported="false"
+            android:theme="@style/Theme.GeradorCurriculo.NoActionBar"
+            android:screenOrientation="portrait">
         </activity>
 
         <!-- Onboarding Activity -->

@@ -1,554 +1,388 @@
-# 🤝 Guia de Contribuição
+# 🤝 Contribuindo para o CV Pro
 
-Obrigado pelo seu interesse em contribuir com o CV Pro! Este guia irá ajudá-lo a começar.
+Obrigado por considerar contribuir para o CV Pro! Este documento fornece diretrizes para contribuições.
 
-## 📋 Índice
+## 📋 Código de Conduta
 
-- [Código de Conduta](#código-de-conduta)
-- [Como Contribuir](#como-contribuir)
-- [Setup do Ambiente de Desenvolvimento](#setup-do-ambiente-de-desenvolvimento)
-- [Processo de Contribuição](#processo-de-contribuição)
-- [Padrões de Código](#padrões-de-código)
-- [Testes](#testes)
-- [Documentação](#documentação)
-- [Reportando Issues](#reportando-issues)
-- [Pull Requests](#pull-requests)
+### Nossos Compromissos
 
-## 🤝 Código de Conduta
-
-Ao participar deste projeto, você concorda em seguir nosso [Código de Conduta](CODE_OF_CONDUCT.md):
-
-- Seja respeitoso e inclusivo
-- Seja construtivo em seus feedbacks
-- Ajude outros contribuidores
-- Mantenha um ambiente profissional e acolhedor
+- Ser respeitoso e inclusivo
+- Aceitar críticas construtivas
+- Focar no que é melhor para a comunidade
+- Mostrar empatia com outros membros
 
 ## 🚀 Como Contribuir
 
-### 1. Fork o Repositório
+### 1. Reportar Bugs
 
+Encontrou um bug? Ajude-nos a melhorar!
+
+**Antes de reportar**:
+- Verifique se o bug já foi reportado
+- Teste na versão mais recente
+- Colete informações relevantes
+
+**Ao reportar, inclua**:
+- Descrição clara do problema
+- Passos para reproduzir
+- Comportamento esperado vs atual
+- Screenshots (se aplicável)
+- Versão do Android
+- Modelo do dispositivo
+- Logs de erro
+
+### 2. Sugerir Melhorias
+
+Tem uma ideia? Compartilhe!
+
+**Ao sugerir**:
+- Descreva claramente a funcionalidade
+- Explique o problema que resolve
+- Forneça exemplos de uso
+- Considere alternativas
+
+### 3. Contribuir com Código
+
+#### Preparação
+
+1. **Fork** o repositório
+2. **Clone** seu fork
 ```bash
-# Fork no GitHub e clone localmente
-git clone https://github.com/SEU_USERNAME/Gerador_Curriculo.git
-cd Gerador_Curriculo
-
-# Adicione o repositório original como upstream
-git remote add upstream https://github.com/carlosalessandro/Gerador_Curriculo.git
+git clone https://github.com/seu-usuario/cv-pro.git
 ```
 
-### 2. Setup do Ambiente de Desenvolvimento
+3. **Crie** uma branch
+```bash
+git checkout -b feature/minha-funcionalidade
+```
 
-#### Pré-requisitos
+#### Desenvolvimento
 
-- **Android Studio** Arctic Fox ou superior
-- **JDK** 8 ou superior
-- **Android SDK** API 24+
-- **Git** configurado com seu nome e email
+**Padrões de Código**:
+- Siga o estilo Java existente
+- Use nomes descritivos
+- Adicione comentários quando necessário
+- Mantenha métodos pequenos e focados
+- Evite código duplicado
 
-#### Configuração
+**Estrutura de Commits**:
+```
+tipo(escopo): descrição curta
 
-1. **Abra o projeto no Android Studio**
-   ```bash
-   # Abra o Android Studio e selecione o projeto
-   # Ou use a linha de comando (se tiver o Android Studio CLI)
-   studio .
-   ```
+Descrição detalhada (opcional)
 
-2. **Sincronize as dependências**
-   - O Android Studio irá sincronizar automaticamente
-   - Se ocorrer erros, tente: `File → Sync Project with Gradle Files`
+Closes #123
+```
 
-3. **Configure o AVD (Android Virtual Device)**
-   - Tools → AVD Manager
-   - Crie um dispositivo com API 24+ ou superior
-   - Recomendado: Pixel 4 com API 30
+**Tipos**:
+- `feat`: Nova funcionalidade
+- `fix`: Correção de bug
+- `docs`: Documentação
+- `style`: Formatação
+- `refactor`: Refatoração
+- `test`: Testes
+- `chore`: Manutenção
 
-4. **Execute o projeto**
-   - Pressione `Ctrl+Shift+R` ou clique no botão Run
-   - Verifique se o app inicia corretamente
+**Exemplos**:
+```bash
+feat(ia): adiciona análise de soft skills
+fix(import): corrige parsing de PDF com imagens
+docs(readme): atualiza instruções de instalação
+```
 
-### 3. Processo de Contribuição
+#### Testes
 
-#### 🌟 Tipos de Contribuições
+- Teste suas mudanças manualmente
+- Verifique em diferentes dispositivos
+- Teste casos extremos
+- Garanta que não quebrou funcionalidades existentes
 
-- **Bug Fixes**: Correção de erros existentes
-- **New Features**: Funcionalidades novas
-- **Documentation**: Melhorias na documentação
-- **UI/UX**: Melhorias na interface e experiência
-- **Performance**: Otimizações de performance
-- **Tests**: Aumento da cobertura de testes
+#### Pull Request
 
-#### 📋 Passos para Contribuir
+1. **Atualize** sua branch
+```bash
+git fetch upstream
+git rebase upstream/main
+```
 
-1. **Escolha uma Issue**
-   - Verifique as [issues abertas](../../issues)
-   - Comente na issue que deseja trabalhar
-   - Aguarde atribuição ou comece se for "good first issue"
+2. **Push** suas mudanças
+```bash
+git push origin feature/minha-funcionalidade
+```
 
-2. **Crie uma Branch**
-   ```bash
-   # Sincronize com o upstream
-   git fetch upstream
-   git checkout main
-   git merge upstream/main
+3. **Abra** um Pull Request
 
-   # Crie uma branch descritiva
-   git checkout -b feature/nova-funcionalidade
-   # ou
-   git checkout -b fix/corrigir-bug-especifico
-   ```
+**No PR, inclua**:
+- Descrição clara das mudanças
+- Referência a issues relacionadas
+- Screenshots (se UI)
+- Checklist de testes
+- Breaking changes (se houver)
 
-3. **Desenvolva sua Solução**
-   - Siga os [padrões de código](#padrões-de-código)
-   - Adicione testes se aplicável
-   - Teste em múltiplos dispositivos/emuladores
-   - Verifique não introduzir regressões
+**Template de PR**:
+```markdown
+## Descrição
+Breve descrição das mudanças
 
-4. **Teste Thoroughly**
-   ```bash
-   # Execute todos os testes
-   ./gradlew check
+## Tipo de Mudança
+- [ ] Bug fix
+- [ ] Nova funcionalidade
+- [ ] Breaking change
+- [ ] Documentação
 
-   # Testes unitários
-   ./gradlew test
+## Como Testar
+1. Passo 1
+2. Passo 2
+3. Passo 3
 
-   # Testes de instrumentação
-   ./gradlew connectedAndroidTest
-   ```
+## Checklist
+- [ ] Código segue o padrão do projeto
+- [ ] Comentários adicionados quando necessário
+- [ ] Documentação atualizada
+- [ ] Testado manualmente
+- [ ] Sem warnings de compilação
 
-5. **Commit suas Mudanças**
-   ```bash
-   # Adicione arquivos modificados
-   git add .
+## Screenshots
+(se aplicável)
 
-   # Commit com mensagem descritiva
-   git commit -m "feat: adiciona nova funcionalidade de exportação PDF
+## Issues Relacionadas
+Closes #123
+```
 
-   - Implementa geração de PDF com template personalizado
-   - Adiciona opções de customização de fonte e cores
-   - Inclui testes unitários para validação
+## 📝 Diretrizes Específicas
 
-   Fixes #123"
-   ```
-
-6. **Push e Pull Request**
-   ```bash
-   # Push para seu fork
-   git push origin feature/nova-funcionalidade
-
-   # Abra um Pull Request no GitHub
-   ```
-
-## 📝 Padrões de Código
-
-### Java Style Guide
-
-Seguimos as convenções do Google Java Style com adaptações para Android:
-
-#### Nomenclatura
+### Java
 
 ```java
-// Classes: PascalCase
-public class CurriculumService {
+// ✅ BOM
+public class CurriculoService {
+    private static final String TAG = "CurriculoService";
     
-    // Métodos: camelCase
-    public void generatePdfDocument() {
-        
+    /**
+     * Calcula o score ATS do currículo
+     * @param curriculo Currículo a ser analisado
+     * @return Score de 0 a 100
+     */
+    public int calcularScore(Curriculo curriculo) {
+        if (curriculo == null) {
+            Log.e(TAG, "Currículo nulo");
+            return 0;
+        }
+        // Lógica...
     }
-    
-    // Variáveis: camelCase
-    private String curriculumTitle;
-    private List<Experience> workExperiences;
-    
-    // Constantes: UPPER_SNAKE_CASE
-    public static final String MAX_FILE_SIZE = "10MB";
-    public static final int DEFAULT_TIMEOUT = 30000;
 }
-```
 
-#### Estrutura de Classe
-
-```java
-package com.example.geradorcurriculo.service;
-
-import android.content.Context;
-import androidx.annotation.NonNull;
-import java.util.List;
-
-/**
- * Serviço responsável pela geração de currículos em PDF.
- * 
- * @author Carlos Alessandro
- * @since 1.0
- */
-public class PdfService {
-    
-    // 1. Constantes estáticas
-    private static final String TAG = "PdfService";
-    private static final int PDF_QUALITY = 90;
-    
-    // 2. Variáveis de instância
-    private final Context context;
-    private final Curriculum curriculum;
-    
-    // 3. Construtor
-    public PdfService(@NonNull Context context, @NonNull Curriculum curriculum) {
-        this.context = context;
-        this.curriculum = curriculum;
-    }
-    
-    // 4. Métodos públicos
-    public void generatePdf(@NonNull PdfCallback callback) {
-        // Implementação
-    }
-    
-    // 5. Métodos privados
-    private void setupPdfDocument() {
-        // Implementação
-    }
-    
-    // 6. Classes internas/interfaces
-    public interface PdfCallback {
-        void onSuccess(String filePath);
-        void onError(Exception exception);
+// ❌ EVITAR
+public class cs {
+    public int calc(Curriculo c) {
+        return c.getScore(); // Sem validação
     }
 }
 ```
 
-#### XML Layouts
+### XML
 
 ```xml
-<!-- Use nomes descritivos e snake_case -->
-<!-- activity_main.xml -->
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<!-- ✅ BOM -->
+<TextView
+    android:id="@+id/text_titulo"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:text="@string/titulo"
+    android:textSize="18sp"
+    android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/text_view_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/main_title"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+<!-- ❌ EVITAR -->
+<TextView android:id="@+id/tv1" android:layout_width="match_parent" 
+android:layout_height="wrap_content" android:text="Título" />
 ```
 
-### Recursos Android
+### Recursos
 
-#### Strings
+- Use `strings.xml` para textos
+- Use `dimens.xml` para dimensões
+- Use `colors.xml` para cores
+- Nomeie recursos de forma descritiva
 
+## 🎨 UI/UX
+
+### Princípios
+
+- Siga Material Design
+- Mantenha consistência visual
+- Priorize acessibilidade
+- Teste em diferentes tamanhos de tela
+
+### Cores
+
+Use as cores definidas em `colors.xml`:
 ```xml
-<!-- res/values/strings.xml -->
-<resources>
-    <!-- Nomes descritivos, agrupados por funcionalidade -->
-    
-    <!-- Main Activity -->
-    <string name="main_title">CV Pro</string>
-    <string name="main_subtitle">Seu currículo profissional</string>
-    
-    <!-- Curriculum Creation -->
-    <string name="create_curriculum_title">Novo Currículo</string>
-    <string name="create_curriculum_hint">Digite o título...</string>
-    
-    <!-- Error Messages -->
-    <string name="error_network">Erro de conexão. Verifique sua internet.</string>
-    <string name="error_file_too_large">Arquivo muito grande. Máximo: %s</string>
-</resources>
+<color name="primary_color">#1976D2</color>
+<color name="accent_color">#FF4081</color>
 ```
 
-#### Cores
+### Animações
 
-```xml
-<!-- res/values/colors.xml -->
-<resources>
-    <!-- Brand Colors -->
-    <color name="colorPrimary">#2196F3</color>
-    <color name="colorPrimaryDark">#1976D2</color>
-    <color name="colorAccent">#FF4081</color>
-    
-    <!-- Semantic Colors -->
-    <color name="success">#4CAF50</color>
-    <color name="warning">#FF9800</color>
-    <color name="error">#F44336</color>
-    
-    <!-- Neutral Colors -->
-    <color name="textPrimary">#212121</color>
-    <color name="textSecondary">#757575</color>
-    <color name="background">#FAFAFA</color>
-</resources>
-```
+- Mantenha suaves (200-300ms)
+- Use interpoladores adequados
+- Não abuse de animações
 
-## 🧪 Testes
+## 🔒 Segurança
 
-### Estrutura de Testes
+### Nunca Commite
 
-```
-app/src/
-├── test/                          # Testes unitários (JVM)
-│   └── java/com/example/geradorcurriculo/
-│       ├── CurriculumServiceTest.java
-│       ├── AtsServiceTest.java
-│       └── PdfServiceTest.java
-└── androidTest/                   # Testes de instrumentação (Android)
-    └── java/com/example/geradorcurriculo/
-        ├── MainActivityTest.java
-        ├── CurriculumCreationTest.java
-        └── AtsAnalysisTest.java
-```
+- ❌ Chaves API
+- ❌ Senhas
+- ❌ Tokens
+- ❌ Dados pessoais
+- ❌ Certificados
 
-### Escrevendo Testes
+### Use
 
-#### Testes Unitários
-
-```java
-@RunWith(MockitoJUnitRunner.class)
-public class CurriculumServiceTest {
-    
-    @Mock
-    private Context mockContext;
-    
-    @Mock
-    private CurriculumDao mockDao;
-    
-    private CurriculumService curriculumService;
-    
-    @Before
-    public void setUp() {
-        curriculumService = new CurriculumService(mockContext, mockDao);
-    }
-    
-    @Test
-    public void saveCurriculum_ValidCurriculum_ReturnsSuccess() {
-        // Given
-        Curriculum curriculum = createValidCurriculum();
-        
-        // When
-        boolean result = curriculumService.saveCurriculum(curriculum);
-        
-        // Then
-        assertTrue(result);
-        verify(mockDao).insert(curriculum);
-    }
-    
-    @Test(expected = IllegalArgumentException.class)
-    public void saveCurriculum_NullCurriculum_ThrowsException() {
-        // When/Then
-        curriculumService.saveCurriculum(null);
-    }
-    
-    private Curriculum createValidCurriculum() {
-        // Helper method para criar dados de teste
-        return new Curriculum("Título", "Descrição");
-    }
-}
-```
-
-#### Testes de UI
-
-```java
-@RunWith(AndroidJUnit4.class)
-public class MainActivityTest {
-    
-    @Rule
-    public ActivityTestRule<MainActivity> activityRule = 
-        new ActivityTestRule<>(MainActivity.class);
-    
-    @Test
-    public void clickCreateCurriculumButton_opiensCreateActivity() {
-        // When
-        onView(withId(R.id.btn_create_curriculum)).perform(click());
-        
-        // Then
-        intended(hasComponent(CriarCurriculoActivity.class.getName()));
-    }
-    
-    @Test
-    public void curriculumList_displaysCorrectData() {
-        // Given
-        List<Curriculum> curriculums = createTestCurriculums();
-        
-        // When
-        onView(withId(R.id.recycler_curriculums)).check(matches(isDisplayed()));
-        
-        // Then
-        onView(withText("Currículo Teste")).check(matches(isDisplayed()));
-    }
-}
-```
-
-### Cobertura de Testes
-
-- **Meta**: 80% de cobertura
-- **Ferramentas**: JaCoCo
-- **Relatórios**: Gerados automaticamente no CI
-
-```bash
-# Verificar cobertura
-./gradlew jacocoTestReport
-
-# Ver relatório
-open app/build/reports/jacoco/jacocoTestReport/html/index.html
-```
+- ✅ Variáveis de ambiente
+- ✅ Arquivos .gitignore
+- ✅ Configurações locais
 
 ## 📚 Documentação
 
-### Comentários de Código
+### Código
 
 ```java
 /**
- * Analisa um currículo usando algoritmos ATS.
+ * Descrição breve do método
  * 
- * <p>Este método utiliza machine learning para identificar palavras-chave
- * relevantes e otimizar o currículo para sistemas de rastreamento de candidatos.
+ * Descrição detalhada (se necessário)
  * 
- * @param curriculum O currículo a ser analisado
- * @param targetJob O cargo alvo para análise personalizada
- * @return Resultado da análise com score e sugestões
- * @throws IllegalArgumentException Se curriculum ou targetJob forem nulos
- * @throws NetworkException Se ocorrer erro na chamada à API
- * 
- * @since 1.0
- * @author Carlos Alessandro
- * 
- * @see ATSResult
- * @see CurriculumService
+ * @param parametro Descrição do parâmetro
+ * @return Descrição do retorno
+ * @throws Exception Quando ocorre erro
  */
-public ATSResult analyzeCurriculum(@NonNull Curriculum curriculum, 
-                                 @NonNull String targetJob) {
-    // Implementação
+```
+
+### README
+
+- Atualize se adicionar funcionalidades
+- Mantenha exemplos atualizados
+- Adicione screenshots se relevante
+
+## 🧪 Testes
+
+### Manuais
+
+Teste pelo menos:
+- Fluxo principal
+- Casos de erro
+- Casos extremos
+- Diferentes dispositivos
+
+### Automatizados (Futuro)
+
+```java
+@Test
+public void testCalcularScore() {
+    Curriculo curriculo = new Curriculo();
+    // Setup...
+    
+    int score = service.calcularScore(curriculo);
+    
+    assertTrue(score >= 0 && score <= 100);
 }
 ```
 
-### Atualização de README
+## 🏷️ Versionamento
 
-- Mantenha o README atualizado com novas funcionalidades
-- Adicione screenshots para novas telas
-- Atualize pré-requisitos se necessário
+Seguimos [Semantic Versioning](https://semver.org/):
 
-## 🐛 Reportando Issues
+- **MAJOR**: Mudanças incompatíveis
+- **MINOR**: Novas funcionalidades compatíveis
+- **PATCH**: Correções de bugs
 
-### Bug Reports
+Exemplo: `1.2.3`
 
-Use o template de bug report:
+## 📞 Comunicação
 
-```markdown
-## 🐛 Bug Report
-**Descrição**: Breve descrição do problema
+### Canais
 
-**Passos para Reproduzir**:
-1. Vá para '...'
-2. Clique em '....'
-3. Role para '....'
-4. Veja erro
+- **Issues**: Bugs e sugestões
+- **Pull Requests**: Código
+- **Discussions**: Perguntas gerais
+- **Email**: suporte@cvpro.app
 
-**Comportamento Esperado**: Descrição do que deveria acontecer
+### Tempo de Resposta
 
-**Comportamento Atual**: Descrição do que acontece
+- Issues: 1-3 dias úteis
+- Pull Requests: 3-7 dias úteis
+- Emails: 1-2 dias úteis
 
-**Screenshots**: Se aplicável
+## 🎯 Prioridades
 
-**Informações do Dispositivo**:
- - Dispositivo: [ex: Pixel 4]
- - Android Version: [ex: 11]
- - Versão do App: [ex: 1.1.0]
+### Alta Prioridade
 
-**Informações Adicionais**: Qualquer contexto relevante
-```
+- Bugs críticos
+- Problemas de segurança
+- Perda de dados
+- Crashes
 
-### Feature Requests
+### Média Prioridade
 
-```markdown
-## ✨ Feature Request
-**Título**: Título claro e conciso
+- Bugs não críticos
+- Melhorias de performance
+- Novas funcionalidades
 
-**Descrição**: Descrição detalhada da funcionalidade
+### Baixa Prioridade
 
-**Problema**: Qual problema esta feature resolve?
-
-**Solução Proposta**: Como você imagina a solução?
-
-**Alternativas**: Outras soluções consideradas
-
-**Mockups/Screenshots**: Se tiver
-
-**Contexto Adicional**: Qualquer informação relevante
-```
-
-## 🔄 Pull Requests
-
-### Checklist antes de abrir PR
-
-- [ ] Código segue os padrões do projeto
-- [ ] Testes passando (verde no CI)
-- [ ] Documentação atualizada
-- [ ] Commits com mensagens claras
-- [ ] Branch atualizada com main
-- [ ] Sem conflitos de merge
-- [ ] Arquivos desnecessários removidos
-- [ ] Performance não impactada negativamente
-
-### Template de PR
-
-```markdown
-## 📝 Descrição
-Breve descrição das mudanças
-
-## 🔧 Tipo de Mudança
-- [ ] Bug fix
-- [ ] New feature
-- [ ] Breaking change
-- [ ] Documentation update
-
-## 🧪 Testes
-- [ ] Unit tests passando
-- [ ] Integration tests passando
-- [ ] Manual tests realizados
-
-## 📸 Screenshots
-Se aplicável, inclua screenshots
-
-## 🔗 Issues Relacionadas
-Fixes #123
-Closes #456
-
-## ✅ Checklist
-- [ ] Meu código segue os padrões do projeto
-- [ ] Realizei self-review do meu código
-- [ ] Adicionei comentários em áreas complexas
-- [ ] Documentei minhas mudanças
-- [ ] Testes passando localmente
-```
-
-### Processo de Review
-
-1. **Auto-review**: Revise seu próprio PR
-2. **Atribuição**: Request review de mantenedores
-3. **Feedback**: Responda aos comentários prontamente
-4. **Correções**: Faça as correções solicitadas
-4. **Aprovação**: Aguarde aprovação para merge
-5. **Merge**: Mantenedor fará o merge
+- Melhorias de UI
+- Refatorações
+- Documentação
 
 ## 🏆 Reconhecimento
 
-Contribuidores serão reconhecidos em:
+Contribuidores serão:
+- Listados no README
+- Mencionados nas release notes
+- Creditados no app (se contribuição significativa)
 
-- README.md (seção de contribuidores)
-- Release notes
-- Posts de blog sobre features
-- Badges especiais no GitHub
+## 📄 Licença
 
-## 📞 Ajuda
-
-Precisa de ajuda? Entre em contato:
-
-- **Discord**: [Canal de desenvolvimento]
-- **Email**: dev@cvpro.app
-- **GitHub Issues**: Para dúvidas técnicas
+Ao contribuir, você concorda que suas contribuições serão licenciadas sob a mesma licença MIT do projeto.
 
 ---
 
-**Obrigado por contribuir com o CV Pro! 🎉**
+## 💡 Dicas
+
+### Para Iniciantes
+
+1. Comece com issues marcadas como `good first issue`
+2. Leia o código existente
+3. Faça perguntas
+4. Comece pequeno
+
+### Para Experientes
+
+1. Revise Pull Requests
+2. Ajude com issues complexas
+3. Melhore a arquitetura
+4. Adicione testes
+
+## 📚 Recursos
+
+- [Android Developers](https://developer.android.com/)
+- [Material Design](https://material.io/)
+- [Java Style Guide](https://google.github.io/styleguide/javaguide.html)
+- [Git Best Practices](https://git-scm.com/book/en/v2)
+
+---
+
+## ❓ Dúvidas?
+
+Não hesite em perguntar! Estamos aqui para ajudar.
+
+- Abra uma issue
+- Envie um email
+- Participe das discussions
+
+---
+
+**Obrigado por contribuir! 🎉**
+
+Juntos, tornamos o CV Pro melhor para todos.
