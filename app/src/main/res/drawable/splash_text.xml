@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="60dp"
+    android:viewportWidth="200"
+    android:viewportHeight="60">
+    
+    <!-- CV Pro text placeholder -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M40,20 L50,20 L50,40 L40,40 Z M55,20 L65,20 L65,40 L55,40 Z" />
+    
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M75,20 L85,20 L85,40 L75,40 Z M90,20 L100,20 L100,40 L90,40 Z M105,20 L115,20 L115,40 L105,40 Z" />
+    
+    <!-- Subtitle -->
+    <path
+        android:fillColor="#90CAF9"
+        android:pathData="M50,48 L150,48 L150,50 L50,50 Z" />
+</vector>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:opacity="opaque">
+    
+    <!-- Background gradient -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:angle="135"
+                android:startColor="#1976D2"
+                android:centerColor="#1565C0"
+                android:endColor="#0D47A1"
+                android:type="linear" />
+        </shape>
+    </item>
+    
+    <!-- Logo -->
+    <item
+        android:width="200dp"
+        android:height="200dp"
+        android:gravity="center">
+        <vector
+            android:width="200dp"
+            android:height="200dp"
+            android:viewportWidth="200"
+            android:viewportHeight="200">
+            
+            <!-- White circle background -->
+            <path
+                android:fillColor="#FFFFFF"
+                android:pathData="M100,30 A70,70 0 1,1 100,170 A70,70 0 1,1 100,30 Z" />
+            
+            <!-- Document -->
+            <path
+                android:fillColor="#1976D2"
+                android:pathData="M70,60 L130,60 L130,140 L70,140 Z" />
+            
+            <!-- Document inner (lighter) -->
+            <path
+                android:fillColor="#E3F2FD"
+                android:pathData="M73,63 L127,63 L127,137 L73,137 Z" />
+            
+            <!-- Header -->
+            <path
+                android:fillColor="#1976D2"
+                android:pathData="M78,70 L122,70 L122,75 L78,75 Z" />
+            
+            <!-- Lines -->
+            <path
+                android:fillColor="#64B5F6"
+                android:pathData="M78,82 L118,82 L118,84 L78,84 Z" />
+            <path
+                android:fillColor="#64B5F6"
+                android:pathData="M78,88 L115,88 L115,90 L78,90 Z" />
+            <path
+                android:fillColor="#64B5F6"
+                android:pathData="M78,94 L122,94 L122,96 L78,96 Z" />
+            <path
+                android:fillColor="#64B5F6"
+                android:pathData="M78,100 L120,100 L120,102 L78,102 Z" />
+            <path
+                android:fillColor="#64B5F6"
+                android:pathData="M78,106 L118,106 L118,108 L78,108 Z" />
+            <path
+                android:fillColor="#64B5F6"
+                android:pathData="M78,112 L122,112 L122,114 L78,114 Z" />
+            <path
+                android:fillColor="#64B5F6"
+                android:pathData="M78,118 L116,118 L116,120 L78,120 Z" />
+            <path
+                android:fillColor="#64B5F6"
+                android:pathData="M78,124 L120,124 L120,126 L78,126 Z" />
+            
+            <!-- AI Star -->
+            <path
+                android:fillColor="#FF4081"
+                android:pathData="M135,50 L140,60 L150,60 L142,67 L145,77 L135,70 L125,77 L128,67 L120,60 L130,60 Z" />
+            
+            <!-- Checkmark -->
+            <path
+                android:fillColor="#4CAF50"
+                android:pathData="M65,125 L70,130 L80,115 L75,110 Z" />
+        </vector>
+    </item>
+    
+    <!-- App name -->
+    <item android:bottom="100dp">
+        <bitmap
+            android:gravity="center|bottom"
+            android:src="@drawable/splash_text" />
+    </item>
+    
+</layer-list>
