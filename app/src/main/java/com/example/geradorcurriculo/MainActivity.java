@@ -12,6 +12,7 @@ import com.example.geradorcurriculo.ui.ImportarCurriculoActivity;
 import com.example.geradorcurriculo.ui.AnaliseAtsActivity;
 import com.example.geradorcurriculo.ui.OnboardingActivity;
 import com.example.geradorcurriculo.ui.PremiumActivity;
+import com.example.geradorcurriculo.ui.ConfiguracoesActivity;
 import com.example.geradorcurriculo.utils.AppRater;
 import com.example.geradorcurriculo.utils.PremiumManager;
 import com.example.geradorcurriculo.utils.AnalyticsHelper;
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private CardView cardImportar;
     private CardView cardAnaliseAts;
     private CardView cardPremium;
+    private CardView cardConfiguracoes;
     private PremiumManager premiumManager;
 
     @Override
@@ -53,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         cardImportar = findViewById(R.id.card_importar);
         cardAnaliseAts = findViewById(R.id.card_analise_ats);
         cardPremium = findViewById(R.id.card_premium);
+        cardConfiguracoes = findViewById(R.id.card_configuracoes);
     }
 
     private void setupClickListeners() {
@@ -78,6 +81,11 @@ public class MainActivity extends AppCompatActivity {
 
         cardPremium.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, PremiumActivity.class);
+            startActivity(intent);
+        });
+
+        cardConfiguracoes.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, ConfiguracoesActivity.class);
             startActivity(intent);
         });
     }

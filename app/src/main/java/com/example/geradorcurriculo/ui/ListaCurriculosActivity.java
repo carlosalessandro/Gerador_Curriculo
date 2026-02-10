@@ -215,6 +215,10 @@ public class ListaCurriculosActivity extends AppCompatActivity {
             Intent intent = new Intent(this, PremiumActivity.class);
             startActivity(intent);
             return true;
+        } else if (id == R.id.action_configuracoes) {
+            Intent intent = new Intent(this, ConfiguracoesActivity.class);
+            startActivity(intent);
+            return true;
         } else if (id == android.R.id.home) {
             finish();
             return true;

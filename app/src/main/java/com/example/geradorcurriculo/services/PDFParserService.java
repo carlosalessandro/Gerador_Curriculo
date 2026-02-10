@@ -67,9 +67,17 @@ public class PDFParserService {
         curriculo.setLinkedin(extrairCampo(texto, PATTERNS_LINKEDIN, ""));
         curriculo.setGithub(extrairCampo(texto, PATTERNS_GITHUB, ""));
         curriculo.setResumoProfissional(extrairCampo(texto, PATTERNS_RESUMO, "Currículo importado. Revise as informações."));
-        curriculo.setExperienciaProfissional(extrairCampo(texto, PATTERNS_EXPERIENCIA, ""));
-        curriculo.setFormacaoAcademica(extrairCampo(texto, PATTERNS_FORMACAO, ""));
-        curriculo.setHabilidades(extrairCampo(texto, PATTERNS_HABILIDADES, ""));
+        
+        // Armazenar textos completos para revisão
+        String experienciaTexto = extrairCampo(texto, PATTERNS_EXPERIENCIA, "");
+        curriculo.setExperienciaProfissional(experienciaTexto);
+        
+        String formacaoTexto = extrairCampo(texto, PATTERNS_FORMACAO, "");
+        curriculo.setFormacaoAcademica(formacaoTexto);
+        
+        String habilidadesTexto = extrairCampo(texto, PATTERNS_HABILIDADES, "");
+        curriculo.setHabilidades(habilidadesTexto);
+        
         return curriculo;
     }
 

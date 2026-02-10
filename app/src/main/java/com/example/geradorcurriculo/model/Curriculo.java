@@ -1,9 +1,11 @@
 package com.example.geradorcurriculo.model;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Date;
 
-public class Curriculo {
+public class Curriculo implements Serializable {
+    private static final long serialVersionUID = 1L;
     private Long id;
     private String nomeCompleto;
     private String email;

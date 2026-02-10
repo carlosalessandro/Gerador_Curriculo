@@ -75,6 +75,18 @@
                 android:value=".MainActivity" />
         </activity>
 
+        <!-- Revisar Curriculum Activity -->
+        <activity
+            android:name=".ui.RevisarCurriculoActivity"
+            android:exported="false"
+            android:parentActivityName=".ui.ImportarCurriculoActivity"
+            android:theme="@style/Theme.GeradorCurriculo.NoActionBar"
+            android:windowSoftInputMode="adjustResize">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.ImportarCurriculoActivity" />
+        </activity>
+
         <!-- Detalhe Curriculum Activity -->
         <activity
             android:name=".ui.DetalheCurriculoActivity"
@@ -103,6 +115,18 @@
             android:exported="false"
             android:parentActivityName=".MainActivity"
             android:theme="@style/Theme.GeradorCurriculo.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+
+        <!-- Configuracoes Activity -->
+        <activity
+            android:name=".ui.ConfiguracoesActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.GeradorCurriculo.NoActionBar"
+            android:windowSoftInputMode="adjustResize">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />

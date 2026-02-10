@@ -263,24 +263,11 @@ public class ImportarCurriculoActivity extends AppCompatActivity {
                     buttonProcessar.setEnabled(true);
 
                     if (finalCurriculo != null) {
-                        long resultado = databaseHelper.inserirCurriculo(finalCurriculo);
-                        if (resultado != -1) {
-                            // Incrementar contador de currículos criados
-                            premiumManager.incrementCurriculosCreated();
-                            
-                            Snackbar.make(findViewById(android.R.id.content), 
-                                    "Currículo importado com sucesso!", 
-                                    Snackbar.LENGTH_LONG)
-                                    .setAction("Visualizar", v -> {
-                                        Intent intent = new Intent(ImportarCurriculoActivity.this, DetalheCurriculoActivity.class);
-                                        intent.putExtra("curriculo_id", resultado);
-                                        startActivity(intent);
-                                        finish();
-                                    })
-                                    .show();
-                        } else {
-                            Toast.makeText(this, "Erro ao salvar currículo importado", Toast.LENGTH_SHORT).show();
-                        }
+                        // Redirecionar para tela de revisão ao invés de salvar diretamente
+                        Intent intent = new Intent(ImportarCurriculoActivity.this, RevisarCurriculoActivity.class);
+                        intent.putExtra("curriculo", finalCurriculo);
+                        startActivity(intent);
+                        finish();
                     } else {
                         Toast.makeText(this, "Não foi possível processar o arquivo", Toast.LENGTH_SHORT).show();
                     }

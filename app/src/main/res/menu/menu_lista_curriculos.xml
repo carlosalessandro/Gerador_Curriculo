@@ -9,6 +9,12 @@
         app:showAsAction="ifRoom" />
     
     <item
+        android:id="@+id/action_configuracoes"
+        android:icon="@android:drawable/ic_menu_preferences"
+        android:title="Configurações"
+        app:showAsAction="never" />
+    
+    <item
         android:id="@+id/action_premium"
         android:icon="@android:drawable/ic_menu_info_details"
         android:title="Premium"

@@ -50,7 +50,7 @@ dependencies {
     implementation 'androidx.room:room-runtime:2.5.0'
     annotationProcessor 'androidx.room:room-compiler:2.5.0'
     
-    // HTTP client for ATS analysis
+    // HTTP client for ATS analysis and Gemini
     implementation 'com.squareup.okhttp3:okhttp:4.9.3'
     
     // PDF generation - iText
