@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="120dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120">
+    
+    <!-- Círculo de fundo -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M60,10 A50,50 0 1,1 60,110 A50,50 0 1,1 60,10 Z" />
+    
+    <!-- Documento/Currículo -->
+    <path
+        android:fillColor="#667eea"
+        android:pathData="M40,30 L80,30 L80,90 L40,90 Z" />
+    
+    <!-- Linhas do documento -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M45,40 L75,40 L75,42 L45,42 Z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M45,48 L75,48 L75,50 L45,50 Z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M45,56 L70,56 L70,58 L45,58 Z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M45,64 L75,64 L75,66 L45,66 Z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M45,72 L68,72 L68,74 L45,74 Z" />
+    
+    <!-- Estrela (destaque) -->
+    <path
+        android:fillColor="#f093fb"
+        android:pathData="M85,25 L88,32 L95,32 L89,37 L92,44 L85,39 L78,44 L81,37 L75,32 L82,32 Z" />
+</vector>
