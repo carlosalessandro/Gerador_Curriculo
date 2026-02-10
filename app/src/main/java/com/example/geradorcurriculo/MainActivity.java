@@ -13,6 +13,7 @@ import com.example.geradorcurriculo.ui.AnaliseAtsActivity;
 import com.example.geradorcurriculo.ui.OnboardingActivity;
 import com.example.geradorcurriculo.ui.PremiumActivity;
 import com.example.geradorcurriculo.ui.ConfiguracoesActivity;
+import com.example.geradorcurriculo.ui.LoginActivity;
 import com.example.geradorcurriculo.utils.AppRater;
 import com.example.geradorcurriculo.utils.PremiumManager;
 import com.example.geradorcurriculo.utils.AnalyticsHelper;
@@ -109,5 +110,28 @@ public class MainActivity extends AppCompatActivity {
 
     private void showMessage(String message) {
         Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onBackPressed() {
+        new android.app.AlertDialog.Builder(this)
+            .setTitle("Sair do App")
+            .setMessage("Deseja sair do CV Pro?")
+            .setPositiveButton("Sair", (dialog, which) -> {
+                super.onBackPressed();
+                finishAffinity();
+            })
+            .setNegativeButton("Cancelar", null)
+            .show();
+    }
+
+    public void realizarLogout() {
+        android.content.SharedPreferences prefs = getSharedPreferences("login_prefs", MODE_PRIVATE);
+        prefs.edit().clear().apply();
+        
+        Intent intent = new Intent(this, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
     }
 }

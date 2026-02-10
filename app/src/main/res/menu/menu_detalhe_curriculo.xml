@@ -7,6 +7,12 @@
         android:icon="@drawable/ic_edit"
         android:title="Editar"
         app:showAsAction="ifRoom" />
+    
+    <item
+        android:id="@+id/action_otimizar_ia"
+        android:icon="@android:drawable/ic_menu_manage"
+        android:title="🤖 Otimizar com IA"
+        app:showAsAction="never" />
         
     <item
         android:id="@+id/action_gerar_pdf"

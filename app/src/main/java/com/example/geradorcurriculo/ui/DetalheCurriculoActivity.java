@@ -170,6 +170,9 @@ public class DetalheCurriculoActivity extends AppCompatActivity {
         if (id == R.id.action_editar) {
             editarCurriculo();
             return true;
+        } else if (id == R.id.action_otimizar_ia) {
+            otimizarComIA();
+            return true;
         } else if (id == R.id.action_gerar_pdf) {
             gerarPDF();
             return true;
@@ -182,5 +185,11 @@ public class DetalheCurriculoActivity extends AppCompatActivity {
         } else {
             return super.onOptionsItemSelected(item);
         }
+    }
+
+    private void otimizarComIA() {
+        Intent intent = new Intent(this, OtimizarCurriculoActivity.class);
+        intent.putExtra("curriculo_id", curriculoId);
+        startActivity(intent);
     }
 }

@@ -256,6 +256,291 @@ public class GeminiService {
         return prompt.toString();
     }
 
+    /**
+     * Otimiza o currículo automaticamente para ATS e melhores práticas de recrutamento
+     */
+    public Curriculo otimizarCurriculoAutomaticamente(Curriculo curriculo) {
+        try {
+            String apiKey = configManager.getGeminiKey();
+            if (apiKey == null) {
+                return curriculo;
+            }
+
+            String prompt = construirPromptOtimizacaoCompleta(curriculo);
+            String response = sendRequest(apiKey, prompt);
+            
+            if (response != null) {
+                return aplicarOtimizacoes(curriculo, response);
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "Erro ao otimizar currículo", e);
+        }
+        
+        return curriculo;
+    }
+
+    /**
+     * Analisa compatibilidade com ATS e retorna score
+     */
+    public int calcularScoreATS(Curriculo curriculo) {
+        try {
+            String apiKey = configManager.getGeminiKey();
+            if (apiKey == null) {
+                return 0;
+            }
+
+            String prompt = construirPromptScoreATS(curriculo);
+            String response = sendRequest(apiKey, prompt);
+            
+            if (response != null) {
+                return extrairScore(response);
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "Erro ao calcular score ATS", e);
+        }
+        
+        return 0;
+    }
+
+    /**
+     * Gera palavras-chave otimizadas para ATS baseado na área de atuação
+     */
+    public List<String> gerarPalavrasChaveATS(String areaAtuacao, String cargo) {
+        List<String> palavrasChave = new ArrayList<>();
+        
+        try {
+            String apiKey = configManager.getGeminiKey();
+            if (apiKey == null) {
+                return palavrasChave;
+            }
+
+            String prompt = construirPromptPalavrasChave(areaAtuacao, cargo);
+            String response = sendRequest(apiKey, prompt);
+            
+            if (response != null) {
+                palavrasChave = parsePalavrasChave(response);
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "Erro ao gerar palavras-chave", e);
+        }
+        
+        return palavrasChave;
+    }
+
+    /**
+     * Melhora descrição de experiência profissional
+     */
+    public String melhorarDescricaoExperiencia(String descricaoOriginal, String cargo) {
+        try {
+            String apiKey = configManager.getGeminiKey();
+            if (apiKey == null) {
+                return descricaoOriginal;
+            }
+
+            String prompt = construirPromptMelhorarExperiencia(descricaoOriginal, cargo);
+            return sendRequest(apiKey, prompt);
+        } catch (Exception e) {
+            Log.e(TAG, "Erro ao melhorar experiência", e);
+            return descricaoOriginal;
+        }
+    }
+
+    /**
+     * Verifica erros gramaticais e ortográficos
+     */
+    public List<String> verificarErrosGramaticais(Curriculo curriculo) {
+        List<String> erros = new ArrayList<>();
+        
+        try {
+            String apiKey = configManager.getGeminiKey();
+            if (apiKey == null) {
+                return erros;
+            }
+
+            String prompt = construirPromptVerificarErros(curriculo);
+            String response = sendRequest(apiKey, prompt);
+            
+            if (response != null) {
+                erros = parseAnaliseResponse(response);
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "Erro ao verificar gramática", e);
+        }
+        
+        return erros;
+    }
+
+    private String construirPromptOtimizacaoCompleta(Curriculo curriculo) {
+        StringBuilder prompt = new StringBuilder();
+        prompt.append("Você é um especialista em recrutamento e sistemas ATS. ");
+        prompt.append("Otimize este currículo seguindo as melhores práticas:\n\n");
+        prompt.append("REGRAS DE OTIMIZAÇÃO:\n");
+        prompt.append("1. Use verbos de ação no início das descrições\n");
+        prompt.append("2. Quantifique resultados sempre que possível\n");
+        prompt.append("3. Inclua palavras-chave relevantes para ATS\n");
+        prompt.append("4. Mantenha linguagem profissional e objetiva\n");
+        prompt.append("5. Destaque conquistas e impacto\n");
+        prompt.append("6. Evite jargões e termos vagos\n");
+        prompt.append("7. Use formatação compatível com ATS\n\n");
+        
+        prompt.append("CURRÍCULO ATUAL:\n");
+        prompt.append("Nome: ").append(curriculo.getNomeCompleto()).append("\n");
+        
+        if (curriculo.getResumoProfissional() != null) {
+            prompt.append("\nResumo Profissional:\n").append(curriculo.getResumoProfissional()).append("\n");
+        }
+        
+        if (curriculo.getExperienciaProfissionalTexto() != null) {
+            prompt.append("\nExperiência Profissional:\n").append(curriculo.getExperienciaProfissionalTexto()).append("\n");
+        }
+        
+        if (curriculo.getFormacaoAcademicaTexto() != null) {
+            prompt.append("\nFormação Acadêmica:\n").append(curriculo.getFormacaoAcademicaTexto()).append("\n");
+        }
+        
+        if (curriculo.getHabilidadesTexto() != null) {
+            prompt.append("\nHabilidades:\n").append(curriculo.getHabilidadesTexto()).append("\n");
+        }
+        
+        prompt.append("\nRETORNE O CURRÍCULO OTIMIZADO NO SEGUINTE FORMATO:\n");
+        prompt.append("RESUMO: [resumo otimizado]\n");
+        prompt.append("EXPERIENCIA: [experiência otimizada]\n");
+        prompt.append("FORMACAO: [formação otimizada]\n");
+        prompt.append("HABILIDADES: [habilidades otimizadas]\n");
+        
+        return prompt.toString();
+    }
+
+    private String construirPromptScoreATS(Curriculo curriculo) {
+        StringBuilder prompt = new StringBuilder();
+        prompt.append("Analise este currículo e atribua um score de 0 a 100 baseado em compatibilidade com sistemas ATS.\n\n");
+        prompt.append("CRITÉRIOS DE AVALIAÇÃO:\n");
+        prompt.append("- Uso de palavras-chave relevantes (25 pontos)\n");
+        prompt.append("- Formatação compatível com ATS (20 pontos)\n");
+        prompt.append("- Clareza e objetividade (20 pontos)\n");
+        prompt.append("- Quantificação de resultados (15 pontos)\n");
+        prompt.append("- Verbos de ação (10 pontos)\n");
+        prompt.append("- Ausência de erros (10 pontos)\n\n");
+        
+        prompt.append("CURRÍCULO:\n");
+        prompt.append(construirPromptAnalise(curriculo));
+        prompt.append("\nRETORNE APENAS O NÚMERO DO SCORE (0-100).\n");
+        
+        return prompt.toString();
+    }
+
+    private String construirPromptPalavrasChave(String areaAtuacao, String cargo) {
+        StringBuilder prompt = new StringBuilder();
+        prompt.append("Liste 15 palavras-chave essenciais para sistemas ATS na área de ");
+        prompt.append(areaAtuacao).append(" para o cargo de ").append(cargo).append(".\n\n");
+        prompt.append("Inclua:\n");
+        prompt.append("- Habilidades técnicas\n");
+        prompt.append("- Ferramentas e tecnologias\n");
+        prompt.append("- Competências comportamentais\n");
+        prompt.append("- Certificações relevantes\n\n");
+        prompt.append("Retorne apenas as palavras-chave, uma por linha, sem numeração.\n");
+        
+        return prompt.toString();
+    }
+
+    private String construirPromptMelhorarExperiencia(String descricaoOriginal, String cargo) {
+        StringBuilder prompt = new StringBuilder();
+        prompt.append("Reescreva esta descrição de experiência profissional para o cargo de ");
+        prompt.append(cargo).append(" seguindo as melhores práticas:\n\n");
+        prompt.append("DESCRIÇÃO ORIGINAL:\n").append(descricaoOriginal).append("\n\n");
+        prompt.append("MELHORIAS NECESSÁRIAS:\n");
+        prompt.append("1. Comece com verbos de ação fortes\n");
+        prompt.append("2. Quantifique resultados (use números, percentuais)\n");
+        prompt.append("3. Destaque impacto e conquistas\n");
+        prompt.append("4. Use palavras-chave relevantes para ATS\n");
+        prompt.append("5. Seja específico e objetivo\n");
+        prompt.append("6. Máximo de 3-4 linhas\n\n");
+        prompt.append("Retorne apenas a descrição melhorada.\n");
+        
+        return prompt.toString();
+    }
+
+    private String construirPromptVerificarErros(Curriculo curriculo) {
+        StringBuilder prompt = new StringBuilder();
+        prompt.append("Analise este currículo e identifique APENAS erros gramaticais, ortográficos e de formatação.\n\n");
+        prompt.append("CURRÍCULO:\n");
+        prompt.append(construirPromptAnalise(curriculo));
+        prompt.append("\nListe os erros encontrados, um por linha. Se não houver erros, retorne 'Nenhum erro encontrado'.\n");
+        
+        return prompt.toString();
+    }
+
+    private Curriculo aplicarOtimizacoes(Curriculo curriculo, String response) {
+        try {
+            // Parse da resposta estruturada
+            String[] sections = response.split("\n");
+            
+            for (String section : sections) {
+                if (section.startsWith("RESUMO:")) {
+                    String resumo = section.substring(7).trim();
+                    if (!resumo.isEmpty()) {
+                        curriculo.setResumoProfissional(resumo);
+                    }
+                } else if (section.startsWith("EXPERIENCIA:")) {
+                    String experiencia = section.substring(12).trim();
+                    if (!experiencia.isEmpty()) {
+                        curriculo.setExperienciaProfissional(experiencia);
+                    }
+                } else if (section.startsWith("FORMACAO:")) {
+                    String formacao = section.substring(9).trim();
+                    if (!formacao.isEmpty()) {
+                        curriculo.setFormacaoAcademica(formacao);
+                    }
+                } else if (section.startsWith("HABILIDADES:")) {
+                    String habilidades = section.substring(12).trim();
+                    if (!habilidades.isEmpty()) {
+                        curriculo.setHabilidades(habilidades);
+                    }
+                }
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "Erro ao aplicar otimizações", e);
+        }
+        
+        return curriculo;
+    }
+
+    private int extrairScore(String response) {
+        try {
+            // Extrair número da resposta
+            String cleaned = response.replaceAll("[^0-9]", "");
+            if (!cleaned.isEmpty()) {
+                int score = Integer.parseInt(cleaned);
+                return Math.min(100, Math.max(0, score)); // Garantir entre 0-100
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "Erro ao extrair score", e);
+        }
+        return 0;
+    }
+
+    private List<String> parsePalavrasChave(String response) {
+        List<String> palavras = new ArrayList<>();
+        
+        if (response == null || response.isEmpty()) {
+            return palavras;
+        }
+        
+        String[] lines = response.split("\n");
+        for (String line : lines) {
+            line = line.trim();
+            // Remover numeração e marcadores
+            line = line.replaceFirst("^\\d+[\\.\\)]\\s*", "");
+            line = line.replaceFirst("^[-\\*]\\s*", "");
+            
+            if (!line.isEmpty() && line.length() > 2) {
+                palavras.add(line);
+            }
+        }
+        
+        return palavras;
+    }
+
     private List<String> parseAnaliseResponse(String response) {
         List<String> sugestoes = new ArrayList<>();
         
