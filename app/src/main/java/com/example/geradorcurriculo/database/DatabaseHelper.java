@@ -309,7 +309,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     curriculo.setAtsSuggestions(gson.fromJson(suggestionsJson, listType));
                 }
 
-                carregarDadosRelacionados(curriculo);
+                // Carregar dados relacionados usando a mesma conexão
+                curriculo.setExperiencias(buscarExperienciasPorCurriculoId(db, curriculo.getId()));
+                curriculo.setFormacoes(buscarFormacoesPorCurriculoId(db, curriculo.getId()));
+                curriculo.setHabilidades(buscarHabilidadesPorCurriculoId(db, curriculo.getId()));
+                curriculo.setIdiomas(buscarIdiomasPorCurriculoId(db, curriculo.getId()));
+                curriculo.setCertificacoes(buscarCertificacoesPorCurriculoId(db, curriculo.getId()));
+                
                 curriculos.add(curriculo);
             } while (cursor.moveToNext());
         }
@@ -345,7 +351,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 curriculo.setAtsSuggestions(gson.fromJson(suggestionsJson, listType));
             }
 
-            carregarDadosRelacionados(curriculo);
+            // Carregar dados relacionados usando a mesma conexão
+            curriculo.setExperiencias(buscarExperienciasPorCurriculoId(db, curriculo.getId()));
+            curriculo.setFormacoes(buscarFormacoesPorCurriculoId(db, curriculo.getId()));
+            curriculo.setHabilidades(buscarHabilidadesPorCurriculoId(db, curriculo.getId()));
+            curriculo.setIdiomas(buscarIdiomasPorCurriculoId(db, curriculo.getId()));
+            curriculo.setCertificacoes(buscarCertificacoesPorCurriculoId(db, curriculo.getId()));
             
             cursor.close();
             db.close();
@@ -357,17 +368,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return null;
     }
 
-    private void carregarDadosRelacionados(Curriculo curriculo) {
-        curriculo.setExperiencias(buscarExperienciasPorCurriculoId(curriculo.getId()));
-        curriculo.setFormacoes(buscarFormacoesPorCurriculoId(curriculo.getId()));
-        curriculo.setHabilidades(buscarHabilidadesPorCurriculoId(curriculo.getId()));
-        curriculo.setIdiomas(buscarIdiomasPorCurriculoId(curriculo.getId()));
-        curriculo.setCertificacoes(buscarCertificacoesPorCurriculoId(curriculo.getId()));
-    }
-
-    private List<ExperienciaProfissional> buscarExperienciasPorCurriculoId(long curriculoId) {
+    private List<ExperienciaProfissional> buscarExperienciasPorCurriculoId(SQLiteDatabase db, long curriculoId) {
         List<ExperienciaProfissional> experiencias = new ArrayList<>();
-        SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_EXPERIENCIAS, null, "curriculo_id = ?", 
                 new String[]{String.valueOf(curriculoId)}, null, null, null);
 
@@ -394,13 +396,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
 
         cursor.close();
-        db.close();
         return experiencias;
     }
 
-    private List<Formacao> buscarFormacoesPorCurriculoId(long curriculoId) {
+    private List<Formacao> buscarFormacoesPorCurriculoId(SQLiteDatabase db, long curriculoId) {
         List<Formacao> formacoes = new ArrayList<>();
-        SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_FORMACOES, null, "curriculo_id = ?", 
                 new String[]{String.valueOf(curriculoId)}, null, null, null);
 
@@ -428,13 +428,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
 
         cursor.close();
-        db.close();
         return formacoes;
     }
 
-    private List<Habilidade> buscarHabilidadesPorCurriculoId(long curriculoId) {
+    private List<Habilidade> buscarHabilidadesPorCurriculoId(SQLiteDatabase db, long curriculoId) {
         List<Habilidade> habilidades = new ArrayList<>();
-        SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_HABILIDADES, null, "curriculo_id = ?", 
                 new String[]{String.valueOf(curriculoId)}, null, null, null);
 
@@ -451,13 +449,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
 
         cursor.close();
-        db.close();
         return habilidades;
     }
 
-    private List<Idioma> buscarIdiomasPorCurriculoId(long curriculoId) {
+    private List<Idioma> buscarIdiomasPorCurriculoId(SQLiteDatabase db, long curriculoId) {
         List<Idioma> idiomas = new ArrayList<>();
-        SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_IDIOMAS, null, "curriculo_id = ?", 
                 new String[]{String.valueOf(curriculoId)}, null, null, null);
 
@@ -474,13 +470,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
 
         cursor.close();
-        db.close();
         return idiomas;
     }
 
-    private List<Certificacao> buscarCertificacoesPorCurriculoId(long curriculoId) {
+    private List<Certificacao> buscarCertificacoesPorCurriculoId(SQLiteDatabase db, long curriculoId) {
         List<Certificacao> certificacoes = new ArrayList<>();
-        SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_CERTIFICACOES, null, "curriculo_id = ?", 
                 new String[]{String.valueOf(curriculoId)}, null, null, null);
 
@@ -505,7 +499,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
 
         cursor.close();
-        db.close();
         return certificacoes;
     }
 
